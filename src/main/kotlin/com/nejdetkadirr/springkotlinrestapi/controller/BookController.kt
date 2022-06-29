@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 @RequestMapping("/books")
-class BookController(val bookRepository: BookRepository) {
+class BookController(private val bookRepository: BookRepository) {
     @PostMapping
     fun create(@Validated @RequestBody book: Book) : ResponseEntity<Book> {
         return ResponseEntity.ok(bookRepository.save(book))
